@@ -11,6 +11,5 @@
       "strictPropertyInitialization": false,
       "stripInternal": true,
       "outDir": "./dist",
-      "outFile": "./dist/index.js"
     }
 }
