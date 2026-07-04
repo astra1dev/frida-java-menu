@@ -3,6 +3,7 @@
       "target": "es2022",
       "lib": ["es2022"],
       "moduleResolution": "node",
+      "rootDir": "./src",
       "sourceRoot": "./src",
       "declaration": true,
       "experimentalDecorators": true,
