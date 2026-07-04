@@ -16,6 +16,7 @@ export class Icon extends View {
 
     /** @internal */
     set imageForImageView(image: string) {
+        this.backgroundColor = TRANSPARENT;
         this.instance.setScaleType(Api.ScaleType.FIT_XY.value);
         this.instance.setImageBitmap(bitmap(image));
 
@@ -25,7 +26,7 @@ export class Icon extends View {
     /** @internal */
     set imageForWebView(image: string) {
         this.instance.loadData(`<html><head></head><body style=\"margin: 0; padding: 0\"><img src=\"${image}\" width=\"${config.icon.size}\" height=\"${config.icon.size}\" ></body></html>`, "text/html", "utf-8");
-        this.instance.backgroundColor = TRANSPARENT;
+        this.backgroundColor = TRANSPARENT;
         this.instance.getSettings().setAppCacheEnabled(true);
     }
 
