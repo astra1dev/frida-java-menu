@@ -1,68 +1,73 @@
-namespace Menu {
-    /** @internal */
-    type InitialPosition = {
-        x: number,
-        y: number
-    };
+import Java from "frida-java-bridge";
 
-    /** @internal */
-    type TouchPosition = {
-        x: number,
-        y: number
-    };
+import { Api, ACTION_DOWN, ACTION_MOVE, ACTION_UP, GONE, ORIENTATION_LANDSCAPE, VISIBLE } from "../api";
+import { app } from "../runtime";
+import { View } from "../ui/view";
+import { instance, config } from "../menu";
 
-    /** @internal */
-    export class OnTouch {
-        initialPosition: InitialPosition;
-        touchPosition: TouchPosition;
+/** @internal */
+type InitialPosition = {
+    x: number,
+    y: number
+};
 
-        constructor(target: View) {
-            this.initialPosition = {x: 0, y: 0};
-            this.touchPosition = {x: 0, y: 0};
+/** @internal */
+type TouchPosition = {
+    x: number,
+    y: number
+};
 
-            target.onTouchListener = (v, e) => this.callback(v, e);
-        }
+/** @internal */
+export class OnTouch {
+    initialPosition: InitialPosition;
+    touchPosition: TouchPosition;
 
-        callback(view: Java.Wrapper, event: Java.Wrapper) {
-            switch(event.getAction()) {
-                case Api.ACTION_DOWN:
-                    this.initialPosition.x = Math.floor(instance.layout.params.x.value);
-                    this.initialPosition.y = Math.floor(instance.layout.params.y.value);
+    constructor(target: View) {
+        this.initialPosition = {x: 0, y: 0};
+        this.touchPosition = {x: 0, y: 0};
 
-                    this.touchPosition.x = Math.floor(event.getRawX());
-                    this.touchPosition.y = Math.floor(event.getRawY());
-                    return true;
-                case Api.ACTION_UP:
-                    instance.layout.me.alpha = 1.;
-                    instance.$icon.alpha = instance.$icon.instance.$className == Api.ImageView.$className ? 255 : 1.;
+        target.onTouchListener = (v, e) => this.callback(v, e);
+    }
 
-                    const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawX() - this.touchPosition.y)];
-                    if (instance.$icon.visibility == Api.VISIBLE) {
-                        if (app.orientation == Api.ORIENTATION_LANDSCAPE) {
-                            instance.$icon.visibility = Api.GONE;
-                            instance.layout.me.visibility = Api.VISIBLE;
-                        }
-                        else if (rawX < 10 && rawY < 10) {
-                            instance.$icon.visibility = Api.GONE;
-                            instance.layout.me.visibility = Api.VISIBLE;
-                        }
+    callback(view: Java.Wrapper, event: Java.Wrapper) {
+        switch(event.getAction()) {
+            case ACTION_DOWN:
+                this.initialPosition.x = Math.floor(instance.layout.params.x.value);
+                this.initialPosition.y = Math.floor(instance.layout.params.y.value);
+
+                this.touchPosition.x = Math.floor(event.getRawX());
+                this.touchPosition.y = Math.floor(event.getRawY());
+                return true;
+            case ACTION_UP:
+                instance.layout.me.alpha = 1.;
+                instance.$icon.alpha = instance.$icon.instance.$className == Api.ImageView.$className ? 255 : 1.;
+
+                const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawX() - this.touchPosition.y)];
+                if (instance.$icon.visibility == VISIBLE) {
+                    if (app.orientation == ORIENTATION_LANDSCAPE) {
+                        instance.$icon.visibility = GONE;
+                        instance.layout.me.visibility = VISIBLE;
                     }
-                    return true;
-                case Api.ACTION_MOVE:
-                    instance.layout.me.alpha = 0.5;
-                    instance.$icon.alpha = instance.$icon.instance.$className == Api.ImageView.$className ?
-                            Math.round(config.icon.alpha / 2) : 0.5;
+                    else if (rawX < 10 && rawY < 10) {
+                        instance.$icon.visibility = GONE;
+                        instance.layout.me.visibility = VISIBLE;
+                    }
+                }
+                return true;
+            case ACTION_MOVE:
+                instance.layout.me.alpha = 0.5;
+                instance.$icon.alpha = instance.$icon.instance.$className == Api.ImageView.$className ?
+                    Math.round(config.icon.alpha / 2) : 0.5;
 
-                    instance.layout.params.x.value = this.initialPosition.x + Math.floor(event.getRawX() - this.touchPosition.x);
-                    instance.layout.params.y.value = this.initialPosition.y + Math.floor(event.getRawY() - this.touchPosition.y);
-                    
-                    Java.scheduleOnMainThread(() => {
-                        app.windowManager.updateViewLayout(instance.rootFrame.instance, instance.layout.params);
-                    })
-                    return true;
-                default:
-                    return false;
-            }
+                instance.layout.params.x.value = this.initialPosition.x + Math.floor(event.getRawX() - this.touchPosition.x);
+                instance.layout.params.y.value = this.initialPosition.y + Math.floor(event.getRawY() - this.touchPosition.y);
+
+                Java.scheduleOnMainThread(() => {
+                    app.windowManager.updateViewLayout(instance.rootFrame.instance, instance.layout.params);
+                })
+                return true;
+            default:
+                return false;
         }
     }
 }

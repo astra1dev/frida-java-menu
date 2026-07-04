@@ -1,79 +1,79 @@
-namespace Menu {
-    export namespace Api {
-        export const Activity = Java.use("android.app.Activity");
-        export const ActivityThread = Java.use("android.app.ActivityThread");
-        export const AlertDialog_Builder = Java.use("android.app.AlertDialog$Builder");
-        export const ArrayAdapter = Java.use("android.widget.ArrayAdapter");
-        export const ArrayList = Java.use("java.util.ArrayList");
-        export const Arrays = Java.use("java.util.Arrays");
-        export const Base64 = Java.use("android.util.Base64");
-        export const BitmapFactory = Java.use("android.graphics.BitmapFactory");
-        export const Build_VERSION = Java.use("android.os.Build$VERSION");
-        export const Button = Java.use("android.widget.Button");
-        export const Color = Java.use("android.graphics.Color");
-        export const CompoundButton_OnCheckedChangeListener = Java.use("android.widget.CompoundButton$OnCheckedChangeListener");
-        export const Configuration = Java.use("android.content.res.Configuration");
-        export const DialogInterfaceOnClickListener = Java.use("android.content.DialogInterface$OnClickListener");
-        export const EditText = Java.use("android.widget.EditText");
-        export const FrameLayout = Java.use("android.widget.FrameLayout");
-        export const GradientDrawable = Java.use("android.graphics.drawable.GradientDrawable");
-        export const Gravity = Java.use("android.view.Gravity");
-        export const HTML = Java.use("android.text.Html");
-        export const ImageView = Java.use("android.widget.ImageView");
-        export const InputType = Java.use("android.text.InputType");
-        export const Intent = Java.use("android.content.Intent");
-        export const JavaString = Java.use("java.lang.String")
-        export const LinearLayout = Java.use("android.widget.LinearLayout");
-        export const LinearLayout_Params = Java.use("android.widget.LinearLayout$LayoutParams")
-        export const Mode = Java.use("android.graphics.PorterDuff$Mode");
-        export const MotionEvent = Java.use("android.view.MotionEvent");
-        export const OnClickListener = Java.use("android.view.View$OnClickListener");
-        export const OnItemSelectedListener = Java.use("android.widget.AdapterView$OnItemSelectedListener")
-        export const OnLongClickListener = Java.use("android.view.View$OnLongClickListener");
-        export const OnSeekBarChangeListener = Java.use("android.widget.SeekBar$OnSeekBarChangeListener");
-        export const OnTouchListener = Java.use("android.view.View$OnTouchListener")
-        export const R_Attr = Java.use("android.R$attr");
-        export const R_Layout = Java.use("android.R$layout");
-        export const RadioButton = Java.use("android.widget.RadioButton");
-        export const RadioGroup = Java.use("android.widget.RadioGroup");
-        export const RelativeLayout = Java.use("android.widget.RelativeLayout");
-        export const RelativeLayout_Params = Java.use("android.widget.RelativeLayout$LayoutParams");
-        export const ScaleType = Java.use("android.widget.ImageView$ScaleType");
-        export const ScrollView = Java.use("android.widget.ScrollView");
-        export const SeekBar = Java.use("android.widget.SeekBar");
-        export const Settings = Java.use("android.provider.Settings");
-        export const Spinner = Java.use("android.widget.Spinner");
-        export const Switch = Java.use("android.widget.Switch");
-        export const TextUtils = Java.use("android.text.TextUtils");
-        export const TextView = Java.use("android.widget.TextView");
-        export const Toast = Java.use("android.widget.Toast");
-        export const TruncateAt = Java.use("android.text.TextUtils$TruncateAt")
-        export const TypedValue = Java.use("android.util.TypedValue");
-        export const Typeface = Java.use("android.graphics.Typeface");
-        export const Uri = Java.use("android.net.Uri");
-        export const View = Java.use("android.view.View");
-        export const ViewGroup = Java.use("android.view.ViewGroup$LayoutParams");
-        export const ViewManager = Java.use("android.view.ViewManager");
-        export const WebView = Java.use("android.webkit.WebView");
-        export const WindowManager_Params = Java.use("android.view.WindowManager$LayoutParams");
-    
-        export const ACTION_DOWN = MotionEvent.ACTION_DOWN.value;
-        export const ACTION_MOVE = MotionEvent.ACTION_MOVE.value;
-        export const ACTION_UP = MotionEvent.ACTION_UP.value;
-        export const ALIGN_PARENT_LEFT = RelativeLayout.ALIGN_PARENT_LEFT.value;
-        export const ALIGN_PARENT_RIGHT = RelativeLayout.ALIGN_PARENT_RIGHT.value;
-        export const CENTER = Gravity.CENTER.value;
-        export const CENTER_HORIZONTAL = RelativeLayout.CENTER_HORIZONTAL.value;
-        export const COMPLEX_UNIT_DIP = TypedValue.COMPLEX_UNIT_DIP.value;
-        export const GONE = View.GONE.value;
-        export const MATCH_PARENT = ViewGroup.MATCH_PARENT.value;
-        export const ORIENTATION_LANDSCAPE = Configuration.ORIENTATION_LANDSCAPE.value;
-        export const simple_spinner_dropdown_item = R_Layout.simple_spinner_dropdown_item.value;
-        export const TRANSPARENT = Color.TRANSPARENT.value;
-        export const VERTICAL = LinearLayout.VERTICAL.value;
-        export const HORIZONTAL = LinearLayout.HORIZONTAL.value;
-        export const VISIBLE = View.VISIBLE.value;
-        export const WINDOW_SERVICE = Activity.WINDOW_SERVICE.value;
-        export const WRAP_CONTENT = ViewGroup.WRAP_CONTENT.value;
-    }
-}
+import Java from "frida-java-bridge";
+
+export const Api = {
+    Activity: Java.use("android.app.Activity"),
+    ActivityThread: Java.use("android.app.ActivityThread"),
+    AlertDialog_Builder: Java.use("android.app.AlertDialog$Builder"),
+    ArrayAdapter: Java.use("android.widget.ArrayAdapter"),
+    ArrayList: Java.use("java.util.ArrayList"),
+    Arrays: Java.use("java.util.Arrays"),
+    Base64: Java.use("android.util.Base64"),
+    BitmapFactory: Java.use("android.graphics.BitmapFactory"),
+    Build_VERSION: Java.use("android.os.Build$VERSION"),
+    Button: Java.use("android.widget.Button"),
+    Color: Java.use("android.graphics.Color"),
+    CompoundButton_OnCheckedChangeListener: Java.use("android.widget.CompoundButton$OnCheckedChangeListener"),
+    Configuration: Java.use("android.content.res.Configuration"),
+    DialogInterfaceOnClickListener: Java.use("android.content.DialogInterface$OnClickListener"),
+    EditText: Java.use("android.widget.EditText"),
+    FrameLayout: Java.use("android.widget.FrameLayout"),
+    GradientDrawable: Java.use("android.graphics.drawable.GradientDrawable"),
+    Gravity: Java.use("android.view.Gravity"),
+    HTML: Java.use("android.text.Html"),
+    ImageView: Java.use("android.widget.ImageView"),
+    InputType: Java.use("android.text.InputType"),
+    Intent: Java.use("android.content.Intent"),
+    JavaString: Java.use("java.lang.String"),
+    LinearLayout: Java.use("android.widget.LinearLayout"),
+    LinearLayout_Params: Java.use("android.widget.LinearLayout$LayoutParams"),
+    Mode: Java.use("android.graphics.PorterDuff$Mode"),
+    MotionEvent: Java.use("android.view.MotionEvent"),
+    OnClickListener: Java.use("android.view.View$OnClickListener"),
+    OnItemSelectedListener: Java.use("android.widget.AdapterView$OnItemSelectedListener"),
+    OnLongClickListener: Java.use("android.view.View$OnLongClickListener"),
+    OnSeekBarChangeListener: Java.use("android.widget.SeekBar$OnSeekBarChangeListener"),
+    OnTouchListener: Java.use("android.view.View$OnTouchListener"),
+    R_Attr: Java.use("android.R$attr"),
+    R_Layout: Java.use("android.R$layout"),
+    RadioButton: Java.use("android.widget.RadioButton"),
+    RadioGroup: Java.use("android.widget.RadioGroup"),
+    RelativeLayout: Java.use("android.widget.RelativeLayout"),
+    RelativeLayout_Params: Java.use("android.widget.RelativeLayout$LayoutParams"),
+    ScaleType: Java.use("android.widget.ImageView$ScaleType"),
+    ScrollView: Java.use("android.widget.ScrollView"),
+    SeekBar: Java.use("android.widget.SeekBar"),
+    Settings: Java.use("android.provider.Settings"),
+    Spinner: Java.use("android.widget.Spinner"),
+    Switch: Java.use("android.widget.Switch"),
+    TextUtils: Java.use("android.text.TextUtils"),
+    TextView: Java.use("android.widget.TextView"),
+    Toast: Java.use("android.widget.Toast"),
+    TruncateAt: Java.use("android.text.TextUtils$TruncateAt"),
+    TypedValue: Java.use("android.util.TypedValue"),
+    Typeface: Java.use("android.graphics.Typeface"),
+    Uri: Java.use("android.net.Uri"),
+    View: Java.use("android.view.View"),
+    ViewGroup: Java.use("android.view.ViewGroup$LayoutParams"),
+    ViewManager: Java.use("android.view.ViewManager"),
+    WebView: Java.use("android.webkit.WebView"),
+    WindowManager_Params: Java.use("android.view.WindowManager$LayoutParams"),
+};
+
+export const ACTION_DOWN = Api.MotionEvent.ACTION_DOWN.value;
+export const ACTION_MOVE = Api.MotionEvent.ACTION_MOVE.value;
+export const ACTION_UP = Api.MotionEvent.ACTION_UP.value;
+export const ALIGN_PARENT_LEFT = Api.RelativeLayout.ALIGN_PARENT_LEFT.value;
+export const ALIGN_PARENT_RIGHT = Api.RelativeLayout.ALIGN_PARENT_RIGHT.value;
+export const CENTER = Api.Gravity.CENTER.value;
+export const CENTER_HORIZONTAL = Api.RelativeLayout.CENTER_HORIZONTAL.value;
+export const COMPLEX_UNIT_DIP = Api.TypedValue.COMPLEX_UNIT_DIP.value;
+export const GONE = Api.View.GONE.value;
+export const MATCH_PARENT = Api.ViewGroup.MATCH_PARENT.value;
+export const ORIENTATION_LANDSCAPE = Api.Configuration.ORIENTATION_LANDSCAPE.value;
+export const simple_spinner_dropdown_item = Api.R_Layout.simple_spinner_dropdown_item.value;
+export const TRANSPARENT = Api.Color.TRANSPARENT.value;
+export const VERTICAL = Api.LinearLayout.VERTICAL.value;
+export const HORIZONTAL = Api.LinearLayout.HORIZONTAL.value;
+export const VISIBLE = Api.View.VISIBLE.value;
+export const WINDOW_SERVICE = Api.Activity.WINDOW_SERVICE.value;
+export const WRAP_CONTENT = Api.ViewGroup.WRAP_CONTENT.value;

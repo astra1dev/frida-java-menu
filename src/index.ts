@@ -1,49 +1,43 @@
 /* Java API */
-/// <reference path="./api.ts" />
+export { Api, ACTION_DOWN, ACTION_MOVE, ACTION_UP, ALIGN_PARENT_LEFT, ALIGN_PARENT_RIGHT, CENTER,
+    CENTER_HORIZONTAL, COMPLEX_UNIT_DIP, GONE, MATCH_PARENT, ORIENTATION_LANDSCAPE, simple_spinner_dropdown_item,
+    TRANSPARENT, VERTICAL, HORIZONTAL, VISIBLE, WINDOW_SERVICE, WRAP_CONTENT} from "./api";
 
 /* Types */
-/// <reference path="./types.ts" />
+export { EmptyCallback, ThisCallback, ThisWithIndexCallback } from "./types"
 
 /* Utils */
-/// <reference path="./utils/decorate.ts" />
-/// <reference path="./utils/format.ts" />
-/// <reference path="./utils/getter.ts" />
-/// <reference path="./utils/hook.ts" />
-/// <reference path="./utils/lazy.ts" />
-/// <reference path="./utils/operations.ts" />
-/// <reference path="./utils/permission.ts" />
-/// <reference path="./utils/random.ts" />
-/// <reference path="./utils/sleep.ts" />
-/// <reference path="./utils/stateHolder.ts" />
-/// <reference path="./utils/wait.ts" />
+export { format } from "./utils/format";
+export { RawOrWrapper, add, remove} from "./utils/operations";
+export { Permission } from "./utils/permission";
+export { randomString } from "./utils/random";
+export { sleep } from "./utils/sleep";
+export { waitForInit } from "./utils/wait";
 
 /* Helpers */
-/// <reference path="./misc/sharedPreferences.ts" />
-/// <reference path="./misc/onTouch.ts" />
-/// <reference path="./runtime.ts" />
+export { SharedPreferences } from "./misc/sharedPreferences";
+export { app, activityInstance, androidVersion, apiLevel, launcher } from "./runtime";
 
 /* UI Objects */
-/// <reference path="./ui/misc.ts" />
-/// <reference path="./ui/view.ts" />
-/// <reference path="./ui/layout.ts" />
-/// <reference path="./ui/button.ts" />
-/// <reference path="./ui/dialog.ts" />
-/// <reference path="./ui/radioGroup.ts" />
-/// <reference path="./ui/seekbar.ts" />
-/// <reference path="./ui/spinner.ts" />
-/// <reference path="./ui/switch.ts" />
-/// <reference path="./ui/textView.ts" />
-/// <reference path="./ui/toast.ts" />
+export { parseColor } from "./ui/misc";
+export { View, wrap } from "./ui/view";
+export { Layout } from "./ui/layout";
+export { Button } from "./ui/button";
+export { DialogCallback, DialogInputCallback, Dialog } from "./ui/dialog";
+export { RadioGroup } from "./ui/radioGroup";
+export { SeekBarCallback, SeekBar } from "./ui/seekbar";
+export { Spinner } from "./ui/spinner";
+export { SwitchCallback, Switch } from "./ui/switch";
+export { TextView } from "./ui/textView";
+export { toast } from "./ui/toast";
 
 /* Layout */
-/// <reference path="./ui/icon.ts" />
-/// <reference path="./layout/config.ts" />
-/// <reference path="./layout/generic.ts" />
-/// <reference path="./layout/lgl/lgl.ts" />
-/// <reference path="./layout/lgl/settings.ts" />
-/// <reference path="./layout/obsidian/obsidian.ts" />
+export { Icon } from "./ui/icon";
+export { ColorConfig, MenuConfig, IconConfig, StringConfig, GenericConfig } from "./layout/config";
+export { ComposerHandler, GenericLayout } from "./layout/generic";
+export { CollapseReturn, LGLConfig, LGLLayout } from "./layout/lgl/lgl";
+export { Settings } from "./layout/lgl/settings";
+export { ObsidianLayout, ObsidianConfig, ObsidianLayoutConfig } from "./layout/obsidian/obsidian";
 
 /* Main class */
-/// <reference path="./menu.ts" />
-
-globalThis.Menu = Menu;
+export { instance, config, setConfig, sharedPreferences, Composer } from "./menu";
