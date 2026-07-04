@@ -46,22 +46,24 @@ export class SeekBar extends View {
     }
     /** Sets onSeekBarChangeListener callback */
     set onSeekBarChangeListener(callback: (progress: number) => void) {
-        this.instance.setOnSeekBarChangeListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.OnSeekBarChangeListener],
-            methods: {
-                onStartTrackingTouch: function(seekBar: Java.Wrapper) {
+        Java.perform(() => {
+            this.instance.setOnSeekBarChangeListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.OnSeekBarChangeListener],
+                methods: {
+                    onStartTrackingTouch: function (seekBar: Java.Wrapper) {
 
-                },
-                onStopTrackingTouch: function(seekBar: Java.Wrapper) {
+                    },
+                    onStopTrackingTouch: function (seekBar: Java.Wrapper) {
 
-                },
-                onProgressChanged: (seekBar: Java.Wrapper, progress: number) => {
-                    seekBar.setProgress(progress)
-                    callback.call(this, progress);
+                    },
+                    onProgressChanged: (seekBar: Java.Wrapper, progress: number) => {
+                        seekBar.setProgress(progress)
+                        callback.call(this, progress);
+                    }
                 }
-            }
-        }).$new());
+            }).$new());
+        });
     }
     /** Sets progress */
     set progress(progress: number) {

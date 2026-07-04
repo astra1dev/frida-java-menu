@@ -43,31 +43,35 @@ export class Dialog extends View {
     }
     /** Sets positive button */
     setPositiveButton(callback: DialogCallback) {
-        this.instance.setPositiveButton(wrap(callback.label), Java.registerClass({
-            name: randomString(35),
-            implements: [Api.DialogInterfaceOnClickListener],
-            methods: {
-                getName: function() {
-                    return "OnClickListenerPositive";
-                },
-                onClick: (dialog: Java.Wrapper, which: Java.Wrapper) => {
-                    callback.fn.call(this);
+        Java.perform(() => {
+            this.instance.setPositiveButton(wrap(callback.label), Java.registerClass({
+                name: randomString(35),
+                implements: [Api.DialogInterfaceOnClickListener],
+                methods: {
+                    getName: function () {
+                        return "OnClickListenerPositive";
+                    },
+                    onClick: (dialog: Java.Wrapper, which: Java.Wrapper) => {
+                        callback.fn.call(this);
+                    }
                 }
-            }
-        }).$new());
+            }).$new());
+        });
     }
     /** Sets negative button */
     setNegativeButton(callback: DialogCallback) {
-        this.instance.setNegativeButton(wrap(callback.label), Java.registerClass({
-            name: randomString(35),
-            implements: [Api.DialogInterfaceOnClickListener],
-            methods: {
-                getName: function() {
-                    return "OnClickListenerNegative";
-                },
-                onClick: () => callback.fn.call(this)
-            }
-        }).$new());
+        Java.perform(() => {
+            this.instance.setNegativeButton(wrap(callback.label), Java.registerClass({
+                name: randomString(35),
+                implements: [Api.DialogInterfaceOnClickListener],
+                methods: {
+                    getName: function () {
+                        return "OnClickListenerNegative";
+                    },
+                    onClick: () => callback.fn.call(this)
+                }
+            }).$new());
+        });
     }
     /** Creates dialog */
     create() {

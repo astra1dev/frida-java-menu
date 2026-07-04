@@ -38,24 +38,26 @@ export class Spinner extends View {
     }
     /** Sets onItemSelectedListener */
     set onItemSelectedListener(callback: ThisWithIndexCallback<Spinner>) {
-        this.instance.setOnItemSelectedListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.OnItemSelectedListener],
-            methods: {
-                onItemSelected: (parent: Java.Wrapper, selected: Java.Wrapper, index: number, id: number) => {
-                    if (!this.initialized) {
-                        this.initialized = true;
-                        return;
-                    };
-                    sharedPreferences.putInt(Api.JavaString.join(Api.JavaString.$new(", "), this.items), index);
-                    new View(parent.getChildAt(0)).textColor = config.color.secondaryText; // gc will kill it (ig)
-                    callback.call(this, index);
-                },
-                onNothingSelected: function(parent: Java.Wrapper) {
+        Java.perform(() => {
+            this.instance.setOnItemSelectedListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.OnItemSelectedListener],
+                methods: {
+                    onItemSelected: (parent: Java.Wrapper, selected: Java.Wrapper, index: number, id: number) => {
+                        if (!this.initialized) {
+                            this.initialized = true;
+                            return;
+                        };
+                        sharedPreferences.putInt(Api.JavaString.join(Api.JavaString.$new(", "), this.items), index);
+                        new View(parent.getChildAt(0)).textColor = config.color.secondaryText; // gc will kill it (ig)
+                        callback.call(this, index);
+                    },
+                    onNothingSelected: function (parent: Java.Wrapper) {
 
+                    }
                 }
-            }
-        }).$new());
+            }).$new());
+        });
     }
     /** Sets selection by given index */
     set selection(position: number) {

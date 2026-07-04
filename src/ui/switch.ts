@@ -24,16 +24,18 @@ export class Switch extends View {
     }
     /** Sets onCheckedChangeListener */
     set onCheckedChangeListener(callback: (state: boolean) => void) {
-        this.instance.setOnCheckedChangeListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.CompoundButton_OnCheckedChangeListener],
-            methods: {
-                onCheckedChanged: (object: Java.Wrapper, state: boolean) => {
-                    sharedPreferences.putBool(this.text, state);
-                    callback.call(this, state);
+        Java.perform(() => {
+            this.instance.setOnCheckedChangeListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.CompoundButton_OnCheckedChangeListener],
+                methods: {
+                    onCheckedChanged: (object: Java.Wrapper, state: boolean) => {
+                        sharedPreferences.putBool(this.text, state);
+                        callback.call(this, state);
+                    }
                 }
-            }
-        }).$new());
+            }).$new());
+        });
     }
 }
 

@@ -84,39 +84,45 @@ export class View {
     }
     /** Sets onClickListener callback */
     set onClickListener(callback: ThisCallback<View>) {
-        this.instance.setOnClickListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.OnClickListener],
-            methods: {
-                onClick: () => callback.call(this)
-            }
-        }).$new());
+        Java.perform(() => {
+            this.instance.setOnClickListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.OnClickListener],
+                methods: {
+                    onClick: () => callback.call(this)
+                }
+            }).$new());
+        });
     }
     /** Sets onLongClickListener callback */
     set onLongClickListener(callback: ThisCallback<View>) {
-        this.instance.setOnLongClickListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.OnLongClickListener],
-            methods: {
-                onLongClick: (view: Java.Wrapper) => {
-                    callback.call(this);
-                    return true;
-                },
-                onLongClickUseDefaultHapticFeedback(view: Java.Wrapper) {
-                    return false;
+        Java.perform(() => {
+            this.instance.setOnLongClickListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.OnLongClickListener],
+                methods: {
+                    onLongClick: (view: Java.Wrapper) => {
+                        callback.call(this);
+                        return true;
+                    },
+                    onLongClickUseDefaultHapticFeedback(view: Java.Wrapper) {
+                        return false;
+                    }
                 }
-            }
-        }).$new());
+            }).$new());
+        });
     }
     /** Sets onTouchListener callback */
     set onTouchListener(callback: (view: Java.Wrapper, event: Java.Wrapper) => void) {
-        this.instance.setOnTouchListener(Java.registerClass({
-            name: randomString(35),
-            implements: [Api.OnTouchListener],
-            methods: {
-                onTouch: callback
-            }
-        }).$new());
+        Java.perform(() => {
+            this.instance.setOnTouchListener(Java.registerClass({
+                name: randomString(35),
+                implements: [Api.OnTouchListener],
+                methods: {
+                    onTouch: callback
+                }
+            }).$new());
+        });
     }
     /** Disposes this object */
     destroy() {
