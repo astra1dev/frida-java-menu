@@ -32,7 +32,7 @@
     "frida-java-bridge": "^7.0.13"
   },
   "devDependencies": {
-    "@types/frida-gum": "^19.7.0",
+    "@types/frida-gum": "^19.8.0",
     "typescript": "^5.3.3"
   }
 }
