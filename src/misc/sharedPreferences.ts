@@ -51,6 +51,16 @@ export class SharedPreferences {
     putBool(key: string, value: boolean) {
         this.instance.edit().putBoolean(Api.JavaString.$new(key), value).apply();
     }
+    /**
+     * Retrieves all values from the preferences.
+     * You must not modify the collection returned by this method, or alter any of its contents.
+     *
+     * @returns java.util.Map<java.lang.String, ?>
+     * @see https://developer.android.com/reference/android/content/SharedPreferences#getAll()
+     */
+    getAll(): Java.Wrapper {
+        return this.instance.getAll();
+    }
     /** Is `key` inside */
     contains(key: string): boolean {
         return !!this.instance.contains(key);
