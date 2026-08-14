@@ -19,10 +19,11 @@ export { SharedPreferences } from "./misc/sharedPreferences";
 export { app, activityInstance, androidVersion, apiLevel, launcher } from "./runtime";
 
 /* UI Objects */
-export { parseColor } from "./ui/misc";
+export { colorToHex, parseColor } from "./ui/misc";
 export { View, wrap } from "./ui/view";
 export { Layout } from "./ui/layout";
 export { Button } from "./ui/button";
+export { resolveAndroidSystemColor, systemAccentColor } from "./ui/color";
 export { DialogCallback, DialogInputCallback, Dialog } from "./ui/dialog";
 export { RadioGroup } from "./ui/radioGroup";
 export { SeekBarCallback, SeekBar } from "./ui/seekbar";

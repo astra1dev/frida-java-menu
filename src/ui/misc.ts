@@ -16,3 +16,10 @@ export function bitmap(icon: string): Java.Wrapper {
 export function parseColor(color: string | number): number {
     return typeof color == "number" ? color : Api.Color.parseColor(`${color}`);
 }
+/** Converts a numeric color value to #RRGGBBAA */
+export function colorToHex(color: number): string {
+    // Convert to unsigned 32-bit integer
+    const unsigned = color >>> 0;
+    // Format as 8-digit hex with leading zeros
+    return `#${unsigned.toString(16).toUpperCase().padStart(8, '0')}`;
+}
