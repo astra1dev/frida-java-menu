@@ -15,13 +15,13 @@ export function resolveAndroidSystemColor(resourceName: string, defaultResourceT
 }
 
 /** Returns the system accent color in hex format. */
-export function systemAccentColor(): string {
+export function systemAccentColor(fallback: string | number = "#000000"): string {
     // I also tried getting Android 12 dynamic colors (https://source.android.com/docs/core/display/dynamic-color)
     // with "color" instead of "attr" default resource type, but it would always throw an exception.
 
     const color =  resolveAndroidSystemColor("colorAccent", "attr") ||
         resolveAndroidSystemColor("colorControlActivated", "attr") ||
-        parseColor("#000000");
+        parseColor(fallback);
 
     return colorToHex(color);
 }
