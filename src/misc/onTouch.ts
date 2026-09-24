@@ -44,7 +44,8 @@ export class OnTouch {
 
                 const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawY() - this.touchPosition.y)];
                 if (instance.$icon.visibility == VISIBLE) {
-                    if (rawX < 10 && rawY < 10) {
+                    // Only open the menu if the icon was released within 10 pixels of the original touch position
+                    if (Math.abs(rawX) < 10 && Math.abs(rawY) < 10) {
                         instance.$icon.visibility = GONE;
                         instance.layout.me.visibility = VISIBLE;
                     }
