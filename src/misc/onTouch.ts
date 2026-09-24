@@ -42,7 +42,7 @@ export class OnTouch {
                 instance.layout.me.alpha = 1.;
                 instance.$icon.alpha = instance.$icon.instance.$className == Api.ImageView.$className ? 255 : 1.;
 
-                const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawX() - this.touchPosition.y)];
+                const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawY() - this.touchPosition.y)];
                 if (instance.$icon.visibility == VISIBLE) {
                     if (app.orientation == ORIENTATION_LANDSCAPE) {
                         instance.$icon.visibility = GONE;
