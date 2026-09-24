@@ -1,6 +1,6 @@
 import Java from "frida-java-bridge";
 
-import { Api, ACTION_DOWN, ACTION_MOVE, ACTION_UP, GONE, ORIENTATION_LANDSCAPE, VISIBLE } from "../api";
+import { Api, ACTION_DOWN, ACTION_MOVE, ACTION_UP, GONE, VISIBLE } from "../api";
 import { app } from "../runtime";
 import { View } from "../ui/view";
 import { instance, config } from "../menu";
@@ -44,11 +44,7 @@ export class OnTouch {
 
                 const [rawX, rawY] = [Math.floor(event.getRawX() - this.touchPosition.x), Math.floor(event.getRawY() - this.touchPosition.y)];
                 if (instance.$icon.visibility == VISIBLE) {
-                    if (app.orientation == ORIENTATION_LANDSCAPE) {
-                        instance.$icon.visibility = GONE;
-                        instance.layout.me.visibility = VISIBLE;
-                    }
-                    else if (rawX < 10 && rawY < 10) {
+                    if (rawX < 10 && rawY < 10) {
                         instance.$icon.visibility = GONE;
                         instance.layout.me.visibility = VISIBLE;
                     }
